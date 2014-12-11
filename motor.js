@@ -4,23 +4,14 @@ var five = require("johnny-five");
 var Spark = require("spark-io");
 var board = new five.Board({
   io: new Spark({
-    //token: process.env.SPARK_TOKEN,
     token: process.env.ACCESS_TOKEN,
-    //deviceId: process.env.SPARK_DEVICE_ID
     deviceId: process.env.DEVICE_ID
   })
 });
 
-//sys.puts(process.env.SPARK_TOKEN);
-//sys.puts(process.env.SPARK_DEVICE_ID);
-sys.puts(process.env.ACCESS_TOKEN);
-sys.puts(process.env.DEVICE_ID);
-
-sys.puts("");
-
-//console.log(process.env);
-
 board.on("ready", function() {
+  var led = new five.Led('D7')
+  led.blink()
   // motorL = new five.Motor({
   //   pin: 'A4'
   // });
@@ -29,18 +20,9 @@ board.on("ready", function() {
   //   pin: 'A5'
   // });
   //
-  // board.repl.inject({
-  //   l: motorL,
-  //   r: motorR,
-  //   forward: function() {
-  //     motorL.fwd(100)
-  //     motorR.fwd(100)
-  //   },
-  //   stop: function() {
-  //     motorL.stop()
-  //     motorR.stop()
-  //   }
-  // });
+   board.repl.inject({
+     led: led
+   });
 
   motorL = new five.Pin({
     pin: 'A0'
