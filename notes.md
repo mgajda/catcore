@@ -11,4 +11,5 @@ Should show 4 different functions:
     * analogread,
     * digitalwrite,
     * digitalread.
-5. Now can try with johny5 robotics.
+5. Now can try with `johnny-five` robotics:
+    * `npm i johnny-five`
