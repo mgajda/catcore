@@ -1,11 +1,24 @@
+var sys = require("sys");
+var console = require("console");
 var five = require("johnny-five");
 var Spark = require("spark-io");
 var board = new five.Board({
   io: new Spark({
-    token: process.env.SPARK_TOKEN,
-    deviceId: process.env.SPARK_DEVICE_ID
+    //token: process.env.SPARK_TOKEN,
+    token: process.env.ACCESS_TOKEN,
+    //deviceId: process.env.SPARK_DEVICE_ID
+    deviceId: process.env.DEVICE_ID
   })
 });
+
+//sys.puts(process.env.SPARK_TOKEN);
+//sys.puts(process.env.SPARK_DEVICE_ID);
+sys.puts(process.env.ACCESS_TOKEN);
+sys.puts(process.env.DEVICE_ID);
+
+sys.puts("");
+
+//console.log(process.env);
 
 board.on("ready", function() {
   // motorL = new five.Motor({
